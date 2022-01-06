@@ -4,6 +4,7 @@ pragma solidity >=0.4.22 <0.9.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract MintIdentity is ERC721Enumerable, Ownable {
@@ -73,6 +74,7 @@ contract MintIdentity is ERC721Enumerable, Ownable {
         ident = id_to_identity[tokenId];
     }
 
+
     function mintIdentity (
         string memory name,
         string memory aka,
@@ -86,6 +88,20 @@ contract MintIdentity is ERC721Enumerable, Ownable {
                 url, bio, block.timestamp, block.timestamp, false, 0, 0);
             _safeMint(msg.sender,_tokenIds.current());
             _tokenIds.increment();
+    }
+
+
+    function claimIdentity(string memory name,
+        string memory name,
+        string memory aka,
+        string memory org,
+        string memory slogan,
+        string memory description,
+        string memory url,
+        string memory bio) external payable {
+        require(msg.value == 0.5 ether, "claiming a date costs 500 finney");
+        mintIdentity(name, aka, org, slogan, description, url, bio);
+        payable(owner()).transfer(0.5 ether);
     }
 
     function changeName(uint256 tokenId, string memory newName)  public {
