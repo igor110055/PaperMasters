@@ -1,6 +1,6 @@
 import {
     selectAccounts,
-    setAccounts,
+    setAccounts, setCostToMint,
     setIdentities, setNumberIdentities,
     setSelectedAccount,
     setTotalSupply,
@@ -30,6 +30,9 @@ export const asyncGetConnectedAccounts = () => (dispatch: Dispatch<any>) => {
             const contract = getContract();
 
             if (contract !== undefined) {
+
+                contract.methods.getIdentityFee().call().then((fee:number)=>{dispatch(setCostToMint(fee))});
+
                 acc.map((account) => {
                     contract.methods.balanceOf(account).call().then((values: any) => {
                         const identityPromises: any[] = [];

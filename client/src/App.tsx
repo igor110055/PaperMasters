@@ -18,6 +18,7 @@ import GetMinted from "./pages/GetMinted";
 import ArtistWork from "./pages/ArtistWork";
 import AboutUs from "./pages/AboutUs";
 import Identities from "./pages/Identities";
+import Mint from "./pages/Mint";
 import MintIdentity from "./contracts/MintIdentity.json";
 import {asyncGetConnectedAccounts, selectAccounts, selectIdentities, selectTotalSupply} from "./store/slices";
 
@@ -91,8 +92,8 @@ const App:FunctionComponent=()=>{
             <Header className="purple-header"> <img src={logo}/> header changed</Header>
             <Header className="purple-content white-footer site-layout-banner" style={{ textAlign: 'center' }}> Establishing Legitimacy on the Blockchain</Header>
                 <Content className="site-layout-content"> content</Content>
-                    <Footer className="purple-content white-footer" style={{ textAlign: 'center' }}> ©2019 Produced by The PaperMasters </Footer>
-                    <Footer className="purple-content white-footer" style={{ textAlign: 'center' }} > Veil Research, Corp. - Establishing Legitimacy on the Blockchain </Footer>
+                <Footer className="purple-content white-footer" style={{ textAlign: 'center' }}> ©2019 Produced by The PaperMasters </Footer>
+                <Footer className="purple-content white-footer" style={{ textAlign: 'center' }} > Veil Research, Corp. - Establishing Legitimacy on the Blockchain </Footer>
 
         </Layout>
 
@@ -118,7 +119,7 @@ const App:FunctionComponent=()=>{
                     <Route path="/" element={<div>HomePage</div>} />
                     <Route path="/Legitimacy" element={<Legitimacy/>} />
                     <Route path="/Identities" element={<Identities/>} />
-                    <Route path="/GetMinted" element={<GetMinted/>} />
+                    <Route path="/GetMinted" element={<Mint/>} />
                     <Route path="/ArtistWork" element={<ArtistWork/>} />
                     <Route path="/AboutUs" element={<AboutUs/>} />
                 </Routes>

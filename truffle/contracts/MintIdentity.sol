@@ -30,10 +30,10 @@ contract MintIdentity is ERC721Enumerable, Ownable {
     mapping(uint256=> Identity) id_to_identity;
 
     string private _currentBaseURI;
-
+    uint private identityFee; // In Finney
     constructor() ERC721("MintIdentity", "IDENT") {
         setBaseURI("https://papermasters.io/mintidentity/");
-
+        setIdentityFee(500);
         mintIdentity("Andrew N.",
             "H-street",
             "PaperMasters",
@@ -57,6 +57,14 @@ contract MintIdentity is ERC721Enumerable, Ownable {
 
     function _baseURI() internal view virtual override returns (string memory) {
         return _currentBaseURI;
+    }
+
+    function setIdentityFee(uint fee) public {
+        identityFee = fee;
+    }
+
+    function getIdentityFee() public returns (uint) {
+        return identityFee;
     }
 
     function createUniqueId(
@@ -91,7 +99,7 @@ contract MintIdentity is ERC721Enumerable, Ownable {
     }
 
 
-    function claimIdentity(string memory name,
+    function claimIdentity(
         string memory name,
         string memory aka,
         string memory org,
@@ -99,9 +107,10 @@ contract MintIdentity is ERC721Enumerable, Ownable {
         string memory description,
         string memory url,
         string memory bio) external payable {
-        require(msg.value == 0.5 ether, "claiming a date costs 500 finney");
+        uint fee = identityFee * 0.001 ether;
+        require(msg.value ==  fee, "claiming a identity costs finney");
         mintIdentity(name, aka, org, slogan, description, url, bio);
-        payable(owner()).transfer(0.5 ether);
+        payable(owner()).transfer(fee);
     }
 
     function changeName(uint256 tokenId, string memory newName)  public {

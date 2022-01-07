@@ -27,7 +27,10 @@ ReactDOM.render(
     <HistoryContext.Provider value={{ history }}>
         <Provider store={store}>
             <PersistGate persistor={persistor}>
-                <BrowserRouter location={history.location} navigator={history}>
+                <BrowserRouter
+                    location={history.location}
+                    navigator={history}
+                >
                     <App />
                 </BrowserRouter>
             </PersistGate>

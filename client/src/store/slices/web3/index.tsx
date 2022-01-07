@@ -13,6 +13,7 @@ export interface Web3State {
   numberIdentities: number | undefined;
   loadingWeb3: boolean;
   totalSupply: number | undefined;
+  costToMint: number | undefined;
 }
 
 const initialState: Web3State = {
@@ -25,7 +26,8 @@ const initialState: Web3State = {
   numberIdentities: undefined,
   identities: [],
   loadingWeb3:false,
-  totalSupply: undefined
+  totalSupply: undefined,
+  costToMint: undefined
 }
 
 
@@ -53,6 +55,9 @@ const web3Slice = createSlice({
     },
     setTotalSupply: (state: Web3State, action: PayloadAction<number>) => {
       state.totalSupply = action.payload;
+    },
+    setCostToMint: (state: Web3State, action: PayloadAction<number>) => {
+      state.costToMint = action.payload;
     },
     setWeb3Busy: (state, action: PayloadAction<boolean>) => {
       state.loadingWeb3 = action.payload;
@@ -82,6 +87,7 @@ export const {
   setIdentities,
   setNumberIdentities,
   setTotalSupply,
+  setCostToMint,
   setWeb3Busy,
   setWeb3Error,
   setWeb3ErrorMessage} = web3Slice.actions;
@@ -97,5 +103,6 @@ export const selectWeb3Busy = (state: RootState) => state[web3Slice.name].loadin
 export const selectWeb3Error = (state: RootState) => state[web3Slice.name].err;
 export const selectWeb3ErrorMessage = (state: RootState) => state[web3Slice.name].errorMessage;
 export const selectTotalSupply = (state: RootState) => state[web3Slice.name].totalSupply;
+export const selectCostToMint = (state: RootState) => state[web3Slice.name].costToMint;
 export * from "./async"
 
