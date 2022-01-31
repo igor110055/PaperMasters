@@ -16,6 +16,7 @@ import SupportUs from "./components/pages/SupportUs";
 import Identity from "./components/pages/Identity";
 import Learn from "./components/pages/Learn";
 import CloudHWM from "./components/pages/CloudHWM";
+import TestSaga from "./components/pages/Test"
 import PageRoutes from './components/PageRoutes';
 import {
   Routes,
@@ -46,6 +47,7 @@ function App() {
             <Route path="/identity" element={<Identity/>}/>
 
             <Route path="/search" element={<Search/>}/>
+            <Route path="/test" element={<TestSaga/>}/>
 
             <Route path="/CloudHWM" element={<CloudHWM/>}/>
 
