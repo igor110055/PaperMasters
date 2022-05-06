@@ -29,7 +29,7 @@ ReactDOM.render(
       <App />
 
 
-                <ReactQueryDevtools />
+
             </QueryClientProvider>
     </MetamaskStateProvider>
     </Provider>

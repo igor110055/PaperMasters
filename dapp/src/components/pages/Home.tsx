@@ -9,7 +9,6 @@ export const Home:FC=()=> {
     return (
         <Flex
         h={'100%'}
-        border={'1px solid green'}
         flexDirection={'column'}
         >
             <Flex

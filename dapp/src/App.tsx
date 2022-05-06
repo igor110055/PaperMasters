@@ -5,12 +5,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footers/Footer";
 import "focus-visible/dist/focus-visible";
 import {Box, Flex, VStack} from '@chakra-ui/react';
-import RoutesRoutes, {NavItem} from './app/RoutesRoutes'
+import RoutesRoutes from './app/RoutesRoutes'
 import {accountArr, accountArrAction, accountBCselectors} from "./features/accountBC/AccountBCSlice";
 import detectEthereumProvider from '@metamask/detect-provider';
 import {select} from "redux-saga/effects";
 import {ReactQueryDevtools} from 'react-query/devtools';
 import {Loading} from "./features/reactQuery/Loading";
+
 
 
 function App() {
