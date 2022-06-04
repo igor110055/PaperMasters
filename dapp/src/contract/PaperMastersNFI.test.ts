@@ -17,7 +17,7 @@ describe('ContractTesting', () => {
   });
   test('Network Supported', async () => {
     expect.assertions(Object.keys(MintABI.networks).length);
-    const results = await Promise.all(
+    const results = await Promise.all
       Object.keys(MintABI.networks).map(async (chainId) => {
         const chainIdSupportedArr = chainIdNetworks.filter((el: any) => {
           return el.chainId === parseInt(chainId, 10);
